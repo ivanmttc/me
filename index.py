@@ -1,10 +1,3 @@
-import firebase_admin
-from firebase_admin import credentials, firestore
-cred = credentials.Certificate("serviceAccountKey.json")
-firebase_admin.initialize_app(cred)
-db = firestore.client()
-
-
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -45,15 +38,7 @@ def work():
     
         return render_template("work.html")
     
-@app.route("/read")
-def read():
-    Result = ""     
-    collection_ref = db.collection("靜宜資管")    
-    docs = collection_ref.order_by("mail", direction=firestore.Query.DESCENDING).get()    
-    for doc in docs:         
-        Result += "文件內容：{}".format(doc.to_dict()) + "<br>"    
-    return Result
-    
+   
 
 #if __name__ == "__main__":
 #   app.run()
