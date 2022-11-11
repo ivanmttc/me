@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    homepage = "<h1>邱梓綸Python網頁</h1>"
+    homepage = "<h1>莫天賜Python網頁</h1>"
     homepage += "<br><a href=/search>選修課程查詢</a><br>"
     return homepage
 
