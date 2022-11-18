@@ -18,32 +18,6 @@ def index():
 
 
 
-@app.route("/search", methods=["GET", "POST"])
-def search():
-    if request.method == "POST":
-        cond = request.form["keyword"]
-        result = "請輸入您要查詢的課程關鍵字：" + cond
-
-        db = firestore.client()
-        collection_ref = db.collection("111")
-        docs = collection_ref.get()
-        result = ""
-        for doc in docs:
-            dict = doc.to_dict()
-            if cond in dict["Course"]:
-                #print("{}老師開的{}課程,每週{}於{}上課".format(dict["Leacture"], dict["Course"],  dict["Time"],dict["Room"]))
-                result += dict["Leacture"] + "老師開的" + dict["Course"] + "課程,每週"
-                result += dict["Time"] + "於" + dict["Room"] + "上課<br>"
-        print(result)
-        if result == "":
-            result = "sorry....."
-        return result
-    else:
-        return render_template("search.html")
-
-
-if __name__ == "__main__":
-    app.run()
 
     import firebase_admin
 from firebase_admin import credentials, firestore
