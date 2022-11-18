@@ -53,7 +53,7 @@ for item in result:
   "lastUpdate": lastUpdate,
   "rate":rate
 }
-  doc_ref = db.collection("愷升電影").document(movie_id)
+  doc_ref = db.collection("天賜電影").document(movie_id)
   doc_ref.set(doc)
 
 print(info)
